@@ -11,3 +11,43 @@ export const GET_CHARACTERS = gql`
     }
   }
 `;
+
+export const GET_CHARACTER_DETAILS = gql`
+  query GetCharacterDetails($id: ID!) {
+    person(id: $id) {
+      name
+      birthYear
+			gender
+			height
+			mass
+      species {
+        name
+        classification
+        designation
+        averageHeight
+        averageLifespan
+        eyeColors
+        hairColors
+        language
+      }
+      homeworld {
+        name
+        diameter
+        rotationPeriod
+        orbitalPeriod
+        gravity
+        population
+        climates
+        terrains
+      }
+      filmConnection {
+        films {
+          title
+          director
+          episodeID
+          releaseDate
+        }
+      }
+    }
+  }
+`;
