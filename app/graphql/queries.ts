@@ -1,15 +1,15 @@
 import { gql } from '@apollo/client';
 
 export const GET_CHARACTERS = gql`
-  query GetAllCharacters($after: String) {
-    allPeople(after: $after) {
-      people {
-        id
-        name
-        birthYear
-      }
+query GetAllCharacters($after: String) {
+  allPeople(after: $after) {
+    people {
+    id
+    name
+    birthYear
     }
   }
+}
 `;
 
 export const GET_CHARACTER_DETAILS = gql`
@@ -17,9 +17,9 @@ export const GET_CHARACTER_DETAILS = gql`
     person(id: $id) {
       name
       birthYear
-			gender
-			height
-			mass
+      gender
+      height
+      mass
       species {
         name
         classification

@@ -13,7 +13,7 @@ export default function RootLayout({
       <body>
         <ApolloProvider client={client}>
           <div className="lg:max-w-screen-md m-auto">
-              {children}
+            {children}
           </div>
         </ApolloProvider>
       </body>
