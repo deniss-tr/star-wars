@@ -1,8 +1,7 @@
 "use client";
 import Link from 'next/link';
-import { useState, useMemo } from "react";
-import { useQuery } from "@apollo/client";
-import { GET_CHARACTERS } from "./graphql/queries";
+import { useState } from "react";
+import SearchBar from "./components/SearchBar";
 
 type ListCharacter = {
   id: string;
@@ -11,22 +10,13 @@ type ListCharacter = {
 };
 
 export default function CharacterList() {
-  const [characters, setCharacters] = useState<ListCharacter[]>([]);
-  const { loading, error, data } = useQuery(GET_CHARACTERS);
-
-  useMemo(() => {
-    if (data) {
-      setCharacters(() => [...data.allPeople.people]);
-    }
-  }, [data]);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  const [ filteredCharacters, setFilteredCharacters] = useState<ListCharacter[]>([]);
 
   return (
     <div className="p-4">
+      <SearchBar onSearch={(characters) => setFilteredCharacters(characters)} />
       <ul className="space-y-4 mt-4">
-        {characters.map((person: ListCharacter) => (
+        {filteredCharacters.map((person: ListCharacter) => (
           <li
             key={person.id}
             className="p-4 bg-gray-800 text-white rounded-lg shadow-lg"
