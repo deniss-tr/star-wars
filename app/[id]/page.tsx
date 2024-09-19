@@ -7,7 +7,6 @@ import FilmTable from "../components/FilmTable";
 
 export default function CharacterDetails({ params }: { params: { id: string } }) {
   const router = useRouter();
-  console.log('params', params);
   const decodedId = decodeURIComponent(params.id);
 
   const { loading, error, data } = useQuery(GET_CHARACTER_DETAILS, {
@@ -21,7 +20,10 @@ export default function CharacterDetails({ params }: { params: { id: string } })
 
   return (
     <div className="p-4">
-      <div className="mt-10">
+      <button className="bg-gray-800 text-white rounded-md px-5 py-2 mt-4" type="button" onClick={() => router.back()}>
+        Go back
+      </button>
+      <div className="mt-3">
         <h1 className="text-3xl font-bold mb-4">{data.person.name}</h1>
         <p className="text-xl mb-2">
           <strong>Birth Year:</strong> {data.person.birthYear}
@@ -42,9 +44,6 @@ export default function CharacterDetails({ params }: { params: { id: string } })
         <div className="mt-4">
           <FilmTable films={films || []} />
         </div>
-        <button className="bg-gray-800 text-white rounded-md px-5 py-2 mt-4" type="button" onClick={() => router.back()}>
-          Go back
-        </button>
       </div>
     </div>
   );
