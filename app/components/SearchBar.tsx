@@ -45,7 +45,7 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
 
   return (
     <>
-        <div className="sticky top-0 bg-gray-900 rounded-md z-10 p-4 shadow-md">
+      <div className="sticky top-0 bg-gray-900 rounded-md z-10 p-4 shadow-md">
         <input
           type="text"
           placeholder="Search characters..."
@@ -57,12 +57,12 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
           <div className="flex items-center">
               <span className="text-white">Sort by Name:</span>
               <button
-              className={`p-2 ml-2 ${
+                className={`p-2 ml-2 ${
                   sortedAsc ? "bg-blue-600" : "bg-gray-600"
-              } text-white rounded-md min-w-16`}
-              onClick={() => setSortedAsc(!sortedAsc)}
+                } text-white rounded-md min-w-16`}
+                onClick={() => setSortedAsc(!sortedAsc)}
               >
-              { sortedAsc ? 'ASC' : 'DESC' }
+                { sortedAsc ? 'ASC' : 'DESC' }
               </button>
           </div>
         </div>
