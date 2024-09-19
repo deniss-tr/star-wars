@@ -24,7 +24,9 @@ export default function CharacterList() {
             <h2 className="text-xl font-semibold">{person.name}</h2>
             <p className="text-gray-400">Birth Year: {person.birthYear}</p>
             <Link href={`/${person.id}`}>
-              <span className="mt-2 inline-block text-blue-500">View Details</span>
+              <span className="mt-2 inline-block text-blue-500 hover:text-white transition duration-500">
+                View Details
+              </span>
             </Link>
           </li>
         ))}

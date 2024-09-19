@@ -2,6 +2,7 @@
 import "./globals.css";
 import { ApolloProvider } from '@apollo/client';
 import client from './lib/apolloClient';
+import { ModalProvider } from './context/ErrorModalContext';
 
 export default function RootLayout({
   children,
@@ -12,9 +13,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ApolloProvider client={client}>
-          <div className="lg:max-w-screen-md m-auto">
-            {children}
-          </div>
+          <ModalProvider>
+            <div className="lg:max-w-screen-md m-auto">
+              {children}
+            </div>
+          </ModalProvider>
         </ApolloProvider>
       </body>
     </html>
