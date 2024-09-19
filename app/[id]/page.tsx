@@ -8,26 +8,6 @@ import { useEffect } from "react";
 import { useModalContext } from '../context/ErrorModalContext';
 import Loader from '../components/Loader';
 
-export async function getServerSideProps({ params }) {
-  const { id } = params;
-  const decodedId = decodeURIComponent(id);
-
-  try {
-    const { loading, error, data } = useQuery(GET_CHARACTER_DETAILS, {
-      variables: { id: decodedId },
-    });
-
-    return {
-        props: { data }
-    };
-  } catch (error) {
-    console.error('Error fetching contact:', error);
-    return {
-        notFound: true
-    };
-  }
-}
-
 export default function CharacterDetails({ params }: { params: { id: string } }) {
   const { openModal } = useModalContext();
   const router = useRouter();
